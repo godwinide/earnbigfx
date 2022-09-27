@@ -1,6 +1,6 @@
 module.exports = {
   ensureAuthenticated: function (req, res, next) {
-    if (req.isAuthenticated() || !req.user?.isAdmin) {
+    if (req.isAuthenticated() && !req.user?.isAdmin) {
       return next();
     }
     req.flash('error_msg', 'Login required');
